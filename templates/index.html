@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+	<link rel="shortcut icon" type="image/png" href="/../static/alien.png"/>
+	<title>Filip Slatinac</title>
+
+	<link rel="stylesheet" href="/../static/css/Index.css">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta charset="utf-8">
+	<style>
+	</style>
+
+	</head>
+
+	<body>
+
+
+		<div class="IntroPage"> 
+				<h1 class="NameTitle">Filip Slatinac</h1>
+				
+				<div class="ChangingTextContainer">
+					<p class="ShortDescription" id="DrivenByText">Driven by: </p> <p class="ShortDescription" id="UpdatedText"></p>
+				</div>
+		</div>
+
+
+		<div class="content">
+			<div class="section" id="Projects">
+				<h1 class="SectionTitle">Projects</h1>
+
+				<div class="projectsGridContainer">
+					{% for project in projects %}
+					 	<a class="item" target="_blank"  href={{ project["html_url"] }} id= {{ project["name"] }}>
+					 	</a>
+					 	<div class="contentContainerItem">
+					 			<h5 class="itemTitle">{{ project["name"] }}</h5>
+					 			<p class="itemDescription">{{ projectDescriptions[project["name"]] }}</p>
+					 	</div>
+
+					{% endfor %}
+				</div>
+			</div>
+
+			<div class="section" id="AboutMe">
+				<div class="LeftSidePicture">
+				</div>
+
+				<div class="RightSideDescription">	
+					<div class="AboutMeDiv">
+						<h1 class="AboutMeTitle">About Me</h1>
+						<p class="AboutMeDescription">Hi! My name is Filip Slatinac. I am a software engineering student at the University of Ottawa as well as a Software Designer at Nokia. I love spending my free time on fitness and on developping new software content. I am also intrigued by mathematics, especially statistics. If you wish to connect with me, please feel free to invite me on Linked-In or send me an e-mail.</p>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="section" id="Contact">
+
+				<a target="_blank" href="https://github.com/IMFIL"><i class="fa fa-github" aria-hidden="true"></i></a>
+				<a target="_blank" href="https://ca.linkedin.com/in/filip-slatinac-6a9a55113"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+
+			</div>
+
+		</div>
+
+
+	</body>
+
+	<script src="https://use.fontawesome.com/8d3cbabc23.js"></script>
+	<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+	<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>   
+	<script src="/../static/js/introChanger.js"></script>
+	<script src="/../static/js/backgroundSetter.js"></script>
+
+</html>

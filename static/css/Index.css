@@ -1,0 +1,282 @@
+
+body {
+	background-color: #EEEEEE;
+	height: 100%;
+    margin: 0;
+}
+
+html{
+    height: 100%;
+    margin: 0;
+}
+
+
+@font-face {
+    font-family: "Francisco-Semibold";
+    src:url("SanFranciscoDisplay-Semibold.otf");
+}
+
+@font-face {
+    font-family: "Francisco-Light";
+    src:url("SanFranciscoDisplay-Light.otf");
+}
+
+@font-face {
+    font-family: "Francisco-Medium";
+    src:url("SanFranciscoDisplay-Medium.otf");
+}
+
+@font-face {
+    font-family: "Francisco-Ultralight";
+    src:url("SanFranciscoDisplay-Ultralight.otf");
+}
+
+:root {
+	--main-background-color:rgb(148,112,112);
+	--text-color:#1f1f1f;
+}
+
+
+.IntroPage {
+	background: url(../coding.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+ 	-moz-background-size: cover;
+  	background-size: cover;
+  	background-size: cover;
+	min-height: 100%; 
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.IntroPage .NameTitle {
+	font-size: 55px;
+	text-align: center;
+    font-family: "Francisco-Ultralight";
+	color: rgb(	175, 238, 238);
+	margin-top: 0;
+}
+
+.IntroPage .ChangingTextContainer {
+	display: flex;
+	justify-content: center;
+	height: 50px;  /* fixed height, fix this with media queries*/
+}
+
+.IntroPage .ShortDescription {
+	font-size: 15px;
+	text-align: center;
+    font-family: "Francisco-Ultralight";
+	color: white;
+	display: inline;
+	margin: 0;
+}
+
+.IntroPage #UpdatedText {
+	font-size: 15px;
+	margin: 0;
+	padding: 0 0 0 10px;
+	width: 140px;   	/* fixed width, fix this with media queries*/
+}
+
+
+.content {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}
+
+.content .section {
+	display: flex;
+	flex-direction: column;	
+	min-height: 100vh;
+	position: relative;
+}
+
+.content #Projects {
+  background: -webkit-linear-gradient(left,rgba(0, 0, 0,0),rgba(182,182,182,30.3)); /*Safari 5.1-6*/
+  background: -o-linear-gradient(right,rgba(0, 0, 0,0),rgba(182,182,182,30.3)); /*Opera 11.1-12*/
+  background: -moz-linear-gradient(bottom,rgba(0, 0, 0,0),rgba(182,182,182,30.3));/*Fx 3.6-15*/
+  background: linear-gradient(to bottom, rgba(0, 0, 0,0),rgba(182,182,182,30.3)); /*Standard*/
+}
+
+.content #AboutMe {
+  	min-height: 52vh;
+  	display: flex;
+  	flex-direction: column;
+}
+
+.content #Contact {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	min-height: 10vh;
+	background-color: #444444;
+	align-items: center;
+}
+
+
+.content .section .SectionTitle {
+	font-size: 55px;
+	text-align: center;
+	font-family: "Francisco-Light";
+	color: var(--text-color);
+	margin: 50px 0 30px 0;
+}
+
+#AboutMe .SectionTitle {
+	font-family: "Francisco-UltraLight";
+	color:rgba(	175, 238, 238,0.7);;
+}
+
+
+
+#Projects .projectsGridContainer {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: initial;
+	margin: 7% 15px 4%;
+	margin-left: calc(15%);
+	margin-right: calc(15%);
+}
+
+#Projects .projectsGridContainer .item {
+	display: inline-block;
+	margin: 0;
+	width: calc(100%);
+	height:50vh;
+	background-color: var(--desciprtion-area-projects);
+	text-decoration: none;
+/*	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+*/}
+
+#Projects .projectsGridContainer .item:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+
+#Projects .projectsGridContainer .contentContainerItem {
+	width: calc(100%);
+	margin-bottom: 15vh;
+	height:30vh;
+/*	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+*/	background-color: var(--desciprtion-area-projects);
+
+}
+
+#Projects .projectsGridContainer .itemTitle {
+	font-size: 20px;
+	color: var(--text-color);
+	font-family: "Francisco-Light";
+	margin: 15px 0 0 15px;
+}
+
+#Projects .projectsGridContainer .itemDescription {
+	margin-left: 15px;
+	margin-right: 15px;
+	font-family: "Francisco-UltraLight";
+	color: var(--text-color);
+	font-size: 15px;
+}
+
+#AboutMe .LeftSidePicture {
+	display: none;
+	height: 0;
+	width: 100vw;
+	background: url(../workStation.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+ 	-moz-background-size: cover;
+  	background-size: cover;
+  	background-size: cover;
+}
+
+#AboutMe .RightSideDescription {
+	width: 100vw;
+	min-height: 52vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#AboutMe .AboutMeDiv {
+	margin: 15px 30px 15px 30px;
+}
+
+#AboutMe .AboutMeTitle{
+	margin: 10px 0 20px 0;
+	font-family: "SanFranciscoDisplay-Ultralight";
+	font-size: 25px;
+}
+
+#AboutMe .AboutMeDescription{
+	font-family: "SanFranciscoDisplay-Ultralight";
+	font-size: 20px;
+}
+
+#Contact i{
+	color: #fff;
+	font-size: 42px;
+	margin: 0 10px 0 10px;
+	text-decoration: none;
+}
+
+#Contact i:hover {
+	color: rgb(	175, 238, 238);
+}
+
+
+
+
+@media screen and (min-width: 750px) {
+
+	 #Projects .projectsGridContainer .item  {
+		  	width: calc(50%);
+		  	height: 40vh;
+		  	margin: 0 0 15vh 0;
+
+	  }
+
+	  #Projects .projectsGridContainer .contentContainerItem {
+	  		width: calc(40%);
+		  	height: 40vh;
+		  	margin-left: 15px;
+	  }
+
+	  .IntroPage #UpdatedText {
+		font-size: 25px;
+	  }
+	  .IntroPage .ShortDescription {
+	  	font-size: 25px;
+	  }
+
+	  .IntroPage .NameTitle {
+	  	font-size: 65px;
+	  }
+
+	  .content .section .SectionTitle {
+	  	font-size: 65px
+	  }
+
+	  #Projects .projectsGridContainer .itemTitle {
+	  	font-size: 30px;
+	  }
+	  #Projects .projectsGridContainer .itemDescription {
+	  	font-size: 19px;
+	  }
+
+	  .content #AboutMe {
+	  	flex-direction: row;
+	  }
+
+	  #AboutMe .LeftSidePicture {
+		width: 50vw;
+		min-height: 52vh;
+		display:flex;
+	}
+
+	  #AboutMe .RightSideDescription {
+		width: 50vw;
+	}
+
+}

@@ -231,7 +231,7 @@ html{
 @media screen and (min-width: 750px) {
 
 	 #Projects .projectsGridContainer .item  {
-		  	width: calc(50%);
+		  	width: 32vw;
 		  	height: 40vh;
 		  	margin: 0 0 15vh 0;
 

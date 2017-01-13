@@ -2,22 +2,22 @@
 var wordArray = ["Innovation", "Statistics", "Technology"];
 
 function changeWord (index){
-	$("#UpdatedText").fadeOut(function(){
-		$(this).text(wordArray[index]).fadeIn();
+	jQuery("#UpdatedText").fadeOut(function(){
+		jQuery(this).text(wordArray[index]).fadeIn();
 	});
 }
 
 function niceFading(){
 	setTimeout(function(){
-	$("#UpdatedText").fadeOut();
+	jQuery("#UpdatedText").fadeOut();
 },2500*(wordArray.length));
 
 setTimeout(function(){
-	$("#DrivenByText").fadeOut();
+	jQuery("#DrivenByText").fadeOut();
 },2500*(wordArray.length));
 
 setTimeout(function(){
-	$("#DrivenByText").text("Software Engineering student at Uottawa").fadeIn();
+	jQuery("#DrivenByText").text("Software Engineering student at Uottawa").fadeIn();
 },2500*(wordArray.length) + 900);
 
 }

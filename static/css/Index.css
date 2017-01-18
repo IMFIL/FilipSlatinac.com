@@ -38,8 +38,8 @@ html{
 
 
 .IntroPage {
-/*	background: url(../coding.jpg) no-repeat center center fixed;
-*/	-webkit-background-size: cover;
+	background: url(../coding.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
  	-moz-background-size: cover;
   	background-size: cover;
   	background-size: cover;
@@ -187,7 +187,6 @@ html{
 	background: url(../workStation.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover;
  	-moz-background-size: cover;
-  	background-size: cover;
   	background-size: cover;
 }
 

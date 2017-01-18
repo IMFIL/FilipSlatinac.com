@@ -25,3 +25,6 @@ jQuery.ajax({
 	}
 	addBackGroundImages();
 });
+
+jQuery(".IntroPage").css("background","url(../coding.jpg) no-repeat center center fixed");
+jQuery(".LeftSidePicture"+names[i]).css("url(../workStation.jpg) no-repeat center center fixed");

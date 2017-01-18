@@ -42,7 +42,7 @@ html{
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
-	background-size: 100% 100%;
+	background-size: cover;
 	min-height: 100%; 
 	margin: 0;
 	display: flex;
@@ -228,19 +228,6 @@ html{
 
 
 @media all and (min-width: 750px) {
-
-	.IntroPage {
-		background: url(../coding.jpg) no-repeat center center fixed;
-		-webkit-background-size: cover;
-	 	-moz-background-size: cover;
-	  	background-size: cover;
-	  	background-size: cover;
-		min-height: 100%; 
-		margin: 0;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-}
 
 	 #Projects .projectsGridContainer .item  {
 		  	width: 32vw;

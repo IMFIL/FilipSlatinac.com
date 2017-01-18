@@ -27,4 +27,9 @@ jQuery.ajax({
 });
 
 jQuery(".IntroPage").css("background","url(/static/coding.jpg) no-repeat center center fixed");
-// jQuery(".LeftSidePicture").css("background","url(/static/workStation.jpg) no-repeat center center fixed");
+jQuery(".LeftSidePicture").css("background","url(/static/workStation.jpg) no-repeat center center fixed");
+
+jQuery(".LeftSidePicture").css("-moz-background-size","cover");
+jQuery(".LeftSidePicture").css("-webkit-background-size","cover");
+jQuery(".LeftSidePicture").css("background-size","cover");
+

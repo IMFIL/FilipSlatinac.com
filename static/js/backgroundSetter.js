@@ -25,4 +25,3 @@ jQuery.ajax({
 	}
 	addBackGroundImages();
 });
-

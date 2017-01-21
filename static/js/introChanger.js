@@ -22,11 +22,12 @@ setTimeout(function(){
 
 }
 
-
-for(var i=0; i < wordArray.length; i++){
+function initiateFading(){
+	for(var i=0; i < wordArray.length; i++){
 	(function(i){
 			setTimeout(function(){changeWord(i)},i*2500);
 	})(i);
 }
 
-niceFading();
+	niceFading();
+}

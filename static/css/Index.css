@@ -48,6 +48,7 @@ html{
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	position: relative;
 }
 
 .IntroPage .NameTitle {
@@ -78,6 +79,34 @@ html{
 	margin: 0;
 	padding: 0 0 0 10px;
 	width: 140px;   	/* fixed width, fix this with media queries*/
+}
+
+.IntroPage .downArrowContainer {
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+.IntroPage .downArrow {
+	-webkit-animation: colorSwitch 5s infinite;
+    animation: colorSwitch 5s infinite;
+}
+
+@-webkit-keyframes colorSwitch {
+    0%  {height:6vh; width:6vh;}
+    25%  {height:7vh; width:7vh;}
+    50%  {height:7vh; width:7vh;}
+    100%  {height:6vh; width:6vh;}
+
+}
+
+@keyframes colorSwitch {
+    0%  {height:6vh; width:6vh;}
+    25%  {height:7vh; width:7vh;}
+    50%  {height:7vh; width:7vh;}
+    100%  {height:6vh; width:6vh;}
 }
 
 

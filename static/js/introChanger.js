@@ -17,7 +17,7 @@ setTimeout(function(){
 },2500*(wordArray.length));
 
 setTimeout(function(){
-	jQuery("#DrivenByText").text("Software Engineering student at Uottawa").fadeIn();
+	jQuery("#DrivenByText").text("Software Engineering student at uOttawa").fadeIn();
 },2500*(wordArray.length) + 900);
 
 }

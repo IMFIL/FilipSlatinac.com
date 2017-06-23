@@ -22,7 +22,6 @@ pbr==3.1.0
 Pillow==3.3.1
 protobuf==3.3.0
 py2app==0.7.3
-pyOpenSSL==0.13.1
 pyparsing==2.0.1
 pytesseract==0.1.6
 pytz==2013.7

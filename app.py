@@ -66,7 +66,8 @@ def jobReturn():
 		return "Company Not Found"
 
 	HTML = BeautifulSoup(page)
-	userPosts = []
+	userPosts = {}
+	postNumber = 0
 	posts = HTML.find_all("div",{"id":"mainpagebody"})[0].find_all("ul",{"id":"question_preview"})[0].find_all("li")
 	for post in posts:
 		tagsForPost = []
@@ -100,8 +101,9 @@ def jobReturn():
 
 		except:
 			answerPath = ""
-
-		userPosts.append({"Question":question,"Answers":answerPath,"Tags":tagsForPost})
+		postNumber += 1
+		key = "Post" + str(postNumber)
+		userPosts[key] = {"Question":question,"Answers":answerPath,"Tags":tagsForPost}
 
 	return json.dumps(userPosts)
 

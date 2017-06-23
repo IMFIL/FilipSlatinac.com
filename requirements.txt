@@ -25,7 +25,6 @@ py2app==0.7.3
 pyOpenSSL==0.13.1
 pyparsing==2.0.1
 pytesseract==0.1.6
-python-dateutil==1.5
 pytz==2013.7
 requests==2.10.0
 scipy==0.13.0b1

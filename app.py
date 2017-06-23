@@ -124,7 +124,8 @@ def jobAnswersReturn():
 	HTML = BeautifulSoup(page,"html5lib")
 	commentThreads = HTML.find_all("div",{"id":"mainpagebody"})[0].find_all("div",id=re.compile('^commentThread'))
 	answers = []
-	returnVals = []
+	returnVals = {}
+	answerNumber = 0
 	for comment in commentThreads:
 		try:
 			comments = comment.find_all("div")
@@ -139,8 +140,8 @@ def jobAnswersReturn():
 							if len(answerText) > 0:
 								answerText = answerText[0].find_all("p")[0].get_text()
 								answers.append(answerText)
-
-			returnVals.append({"Answers":answers})
+			answerNumber += 1
+			returnVals["Answer"+str(answerNumber)]={"Answers":answers}
 
 		except:
 			pass

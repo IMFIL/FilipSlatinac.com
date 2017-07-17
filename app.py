@@ -145,6 +145,87 @@ def jobAnswersReturn():
 	return json.dumps(returnVals)
 
 
+@app.route('/resources')
+def resourcesReturn():
+	tag1 =request.args.get('tag1')
+	tag2 =request.args.get('tag2')
+	tag3 =request.args.get('tag3')
+
+	youtubeApi = "https://www.googleapis.com/youtube/v3/search?q="+tag1+"+"+tag2+"+"+tag3+"+interview&part=snippet&key=AIzaSyAcB5J8KqGGka_2E0Xeyc187nQ0VcInLzM&maxResults=5"
+	bookApi = "https://www.googleapis.com/books/v1/volumes?q="+tag1+"+"+tag2+"+"+tag3+"&key=AIzaSyAcB5J8KqGGka_2E0Xeyc187nQ0VcInLzM&maxResults=5"
+	courseraApi = "https://api.coursera.org/api/courses.v1?q=search&query="+tag1+"+"+tag2+"+"+tag3+"&limit=5&fields=photoUrl,description"
+
+	youtubeAnswer=None
+	bookAnswer=None
+	courseraAnswer=None
+
+	youtubeReturnValue = {}
+	bookReturnValue = {}
+	courseraReturnValue = {}
+
+	returnVals = {}
+
+
+	try:
+		youtubeAnswer = urllib2.urlopen(youtubeApi)
+		youtubeAnswer = json.load(youtubeAnswer)
+
+		x = 0
+		tmp = {}
+		for i in youtubeAnswer["items"]:
+			tmp = {}
+			tmp["url"] =  i["id"]["videoId"]
+			tmp["title"] =  i["snippet"]["title"]
+			tmp["description"] = i["snippet"]["description"]
+			tmp["image"] = i["snippet"]["thumbnails"]["default"]["url"]
+			youtubeReturnValue["Video"+str(x)] = tmp
+			x = x + 1
+
+	except urllib2.HTTPError:
+		youtubeAnswer = "No Videos Available for this company"
+
+	try:
+		bookAnswer = urllib2.urlopen(bookApi)
+		bookAnswer = json.load(bookAnswer)
+
+		x = 0
+		tmp = {}
+		for i in bookAnswer["items"]:
+			tmp = {}
+			tmp["url"] =  "https://books.google.ca/books?id="+i["id"]
+			tmp["title"] =  i["volumeInfo"]["title"]
+			tmp["description"] = json.load(urllib2.urlopen("https://www.googleapis.com/books/v1/volumes/"+i["id"]+"?key=AIzaSyAcB5J8KqGGka_2E0Xeyc187nQ0VcInLzM"))["volumeInfo"]["description"]
+			tmp["image"] = i["volumeInfo"]["imageLinks"]["smallThumbnail"]
+			bookReturnValue["Book"+str(x)] = tmp
+			x = x + 1
+
+	except urllib2.HTTPError:
+		bookAnswer = "No books available for this company"
+
+	try:
+		courseraAnswer = urllib2.urlopen(courseraApi)
+		courseraAnswer = json.load(courseraAnswer)
+
+		x = 0
+		tmp = {}
+		for i in courseraAnswer["elements"]:
+			tmp = {}
+			tmp["url"] =  "https://www.coursera.org/learn/"+i["slug"]
+			tmp["title"] =  i["name"]
+			tmp["description"] = i["description"]
+			tmp["image"] = i["photoUrl"]
+			courseraReturnValue["Course"+str(x)] = tmp
+			x = x + 1
+
+	except urllib2.HTTPError:
+		courseraAnswer="No courses available for this company"
+	
+	returnVals["YoutubeVideos"] = youtubeReturnValue
+	returnVals["Books"] = bookReturnValue
+	returnVals["Courses"] = courseraReturnValue
+	return json.dumps(returnVals)
+
+
 
 
 

@@ -76,10 +76,13 @@ def jobReturn():
 		tag1 = None
 		tag2 = None
 		tag3 = None
+		tag4 = None
 
 		firstTag = -1
 		secondTag = -1
 		thirdTag = -1
+		fourthTag = -1
+
 
 		question = []
 		answersPath = ""
@@ -121,10 +124,11 @@ def jobReturn():
 		userPosts[key] = {"Question":question,"Answers":answerPath}
 	print(relevanceMap)
 
-	if len(relevanceMap) <= 4:
+	if len(relevanceMap) <= 5:
 		tag1 = "software"
 		tag2 = "coding"
 		tag3 = company
+		tag4 = "interview"
 
 	else:
 		for element in relevanceMap.keys():
@@ -139,8 +143,12 @@ def jobReturn():
 			if relevanceMap[element] > thirdTag and element != tag2 and element != tag1:
 				thirdTag = relevanceMap[element]
 				tag3=element
+		for element in relevanceMap.keys():
+			if relevanceMap[element] > fourthTag and element != tag2 and element != tag1 and element != tag3:
+				fourthTag = relevanceMap[element]
+				tag4=element
 
-	tagsForPost = [tag1,tag2,tag3]
+	tagsForPost = [tag1,tag2,tag3,tag4]
 	userPosts["Tags"] = tagsForPost
 
 	return json.dumps(userPosts)
@@ -188,10 +196,11 @@ def resourcesReturn():
 	tag1 =request.args.get('tag1')
 	tag2 =request.args.get('tag2')
 	tag3 =request.args.get('tag3')
+	tag4 = request.args.get('tag4')
 
-	youtubeApi = "https://www.googleapis.com/youtube/v3/search?q="+tag1+"+"+tag2+"+"+tag3+"&part=snippet&type=video&key=AIzaSyAcB5J8KqGGka_2E0Xeyc187nQ0VcInLzM&maxResults=5"
-	bookApi = "https://www.googleapis.com/books/v1/volumes?q="+tag1+"+"+tag2+"+"+tag3+"&key=AIzaSyAcB5J8KqGGka_2E0Xeyc187nQ0VcInLzM&maxResults=5"
-	courseraApi = "https://api.coursera.org/api/courses.v1?q=search&query="+tag1+"+"+tag2+"+"+tag3+"&limit=5&fields=photoUrl,description"
+	youtubeApi = "https://www.googleapis.com/youtube/v3/search?q="+tag1+"+"+tag2+"+"+tag3+"+"tag4+"&part=snippet&type=video&key=AIzaSyAcB5J8KqGGka_2E0Xeyc187nQ0VcInLzM&maxResults=5"
+	bookApi = "https://www.googleapis.com/books/v1/volumes?q="+tag1+"+"+tag2+"+"+tag3+"+"tag4+"&key=AIzaSyAcB5J8KqGGka_2E0Xeyc187nQ0VcInLzM&maxResults=5"
+	courseraApi = "https://api.coursera.org/api/courses.v1?q=search&query="+tag1+"+"+tag2+"+"+tag3+"+"tag4+"&limit=5&fields=photoUrl,description"
 
 	youtubeAnswer=None
 	bookAnswer=None

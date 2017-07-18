@@ -232,6 +232,7 @@ def resourcesReturn():
 			tmp = {}
 			tmp["url"] =  "https://books.google.ca/books?id="+i["id"]
 			tmp["title"] =  i["volumeInfo"]["title"]
+			tmp["author"] = i["volumeInfo"]["authors"]
 			try:
 				tmp["description"] = json.load(urllib2.urlopen("https://www.googleapis.com/books/v1/volumes/"+i["id"]+"?key=AIzaSyAcB5J8KqGGka_2E0Xeyc187nQ0VcInLzM"))["volumeInfo"]["description"]
 

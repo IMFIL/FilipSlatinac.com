@@ -67,10 +67,20 @@ def jobReturn():
 
 	HTML = BeautifulSoup(page)
 	userPosts = {}
+	relevanceMap = {}
 	postNumber = 0
 	posts = HTML.find_all("div",{"id":"mainpagebody"})[0].find_all("ul",{"id":"question_preview"})[0].find_all("li")
 	for post in posts:
 		tagsForPost = []
+
+		tag1 = None
+		tag2 = None
+		tag3 = None
+
+		firstTag = -1
+		secondTag = -1
+		thirdTag = -1
+
 		question = []
 		answersPath = ""
 
@@ -80,8 +90,12 @@ def jobReturn():
 			tags = []
 		for tag in tags:
 			tagArray = str(tag.get_text()).replace('/',' ').split()
-			tagsForPost.extend(tagArray)
-		
+			for string in tagArray:
+				if relevanceMap.has_key(string):
+					relevanceMap[string] +=1
+				else:
+					relevanceMap[string] = 0
+
 		try:
 			postComment = post.find_all("span",{"class":"entry"})[0].find_all("a")[0].find_all("p")[0].get_text()
 		except:
@@ -104,7 +118,30 @@ def jobReturn():
 			answerPath = ""
 		postNumber += 1
 		key = "Post" + str(postNumber)
-		userPosts[key] = {"Question":question,"Answers":answerPath,"Tags":tagsForPost}
+		userPosts[key] = {"Question":question,"Answers":answerPath}
+	print(relevanceMap)
+
+	if len(relevanceMap) <= 4:
+		tag1 = "software"
+		tag2 = "coding"
+		tag3 = company
+
+	else:
+		for element in relevanceMap.keys():
+			if relevanceMap[element] > firstTag:
+				firstTag = relevanceMap[element]
+				tag1=element
+		for element in relevanceMap.keys():
+			if relevanceMap[element] > secondTag and element != tag1:
+				secondTag = relevanceMap[element]
+				tag2=element
+		for element in relevanceMap.keys():
+			if relevanceMap[element] > thirdTag and element != tag2 and element != tag1:
+				thirdTag = relevanceMap[element]
+				tag3=element
+
+	tagsForPost = [tag1,tag2,tag3]
+	userPosts["Tags"] = tagsForPost
 
 	return json.dumps(userPosts)
 

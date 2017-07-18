@@ -79,7 +79,8 @@ def jobReturn():
 		except:
 			tags = []
 		for tag in tags:
-			tagsForPost.append(tag.get_text())
+			tagArray = re.split(r"\/|\b",str(tag.get_text()))
+			tagsForPost.extend(tagArray)
 		
 		try:
 			postComment = post.find_all("span",{"class":"entry"})[0].find_all("a")[0].find_all("p")[0].get_text()

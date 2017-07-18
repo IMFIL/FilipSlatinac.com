@@ -79,7 +79,7 @@ def jobReturn():
 		except:
 			tags = []
 		for tag in tags:
-			tagArray = re.split(r"\/|\b",str(tag.get_text()))
+			tagArray = str(tag.get_text()).replace('/',' ').split()
 			tagsForPost.extend(tagArray)
 		
 		try:

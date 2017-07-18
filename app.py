@@ -239,7 +239,7 @@ def resourcesReturn():
 				tmp["description"] = "No Description For This book"
 
 			try:
-				tmp["image"] = i["volumeInfo"]["imageLinks"]["smallThumbnail"]
+				tmp["image"] = i["volumeInfo"]["imageLinks"]["small"]
 
 			except Exception, e:
 

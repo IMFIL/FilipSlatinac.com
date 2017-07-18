@@ -152,7 +152,7 @@ def resourcesReturn():
 	tag2 =request.args.get('tag2')
 	tag3 =request.args.get('tag3')
 
-	youtubeApi = "https://www.googleapis.com/youtube/v3/search?q="+tag1+"+"+tag2+"+"+tag3+"&part=snippet&key=AIzaSyAcB5J8KqGGka_2E0Xeyc187nQ0VcInLzM&maxResults=5"
+	youtubeApi = "https://www.googleapis.com/youtube/v3/search?q="+tag1+"+"+tag2+"+"+tag3+"&part=snippet&type=video&key=AIzaSyAcB5J8KqGGka_2E0Xeyc187nQ0VcInLzM&maxResults=5"
 	bookApi = "https://www.googleapis.com/books/v1/volumes?q="+tag1+"+"+tag2+"+"+tag3+"&key=AIzaSyAcB5J8KqGGka_2E0Xeyc187nQ0VcInLzM&maxResults=5"
 	courseraApi = "https://api.coursera.org/api/courses.v1?q=search&query="+tag1+"+"+tag2+"+"+tag3+"&limit=5&fields=photoUrl,description"
 
@@ -205,7 +205,7 @@ def resourcesReturn():
 				tmp["image"] = i["volumeInfo"]["imageLinks"]["smallThumbnail"]
 
 			except Exception, e:
-				
+
 				tmp["image"] = "NONE"
 
 			bookReturnValue["Book"+str(x)] = tmp

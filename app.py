@@ -92,7 +92,7 @@ def jobReturn():
 		except:
 			tags = []
 		for tag in tags:
-			tagArray = str(tag.get_text()).replace('/',' ').split()
+			tagArray = str(tag.get_text()).replace('/',' ').replace('-','').split()
 			for string in tagArray:
 				if relevanceMap.has_key(string):
 					relevanceMap[string] +=1

@@ -92,8 +92,21 @@ def jobReturn():
 		except:
 			tags = []
 		for tag in tags:
-			tagArray = str(tag.get_text()).replace('/',' ').replace('-','').split()
+			tagArray = str(tag.get_text()).replace('/',' ').replace('-','').lower().split()
 			for string in tagArray:
+				if "sde" in string:
+
+					if relevanceMap.has_key("development"):
+						relevanceMap["development"] +=1
+					else:
+						relevanceMap["development"] = 0
+
+					if relevanceMap.has_key("software"):
+						relevanceMap["software"] +=1
+					else:
+						relevanceMap["software"] = 0
+						continue
+
 				if relevanceMap.has_key(string):
 					relevanceMap[string] +=1
 				else:
@@ -219,14 +232,19 @@ def resourcesReturn():
 
 		x = 0
 		tmp = {}
-		for i in youtubeAnswer["items"]:
-			tmp = {}
-			tmp["url"] =  i["id"]["videoId"]
-			tmp["title"] =  i["snippet"]["title"]
-			tmp["description"] = i["snippet"]["description"]
-			tmp["image"] = i["snippet"]["thumbnails"]["default"]["url"]
-			youtubeReturnValue["Video"+str(x)] = tmp
-			x = x + 1
+
+		try:
+			for i in youtubeAnswer["items"]:
+				tmp = {}
+				tmp["url"] =  i["id"]["videoId"]
+				tmp["title"] =  i["snippet"]["title"]
+				tmp["description"] = i["snippet"]["description"]
+				tmp["image"] = i["snippet"]["thumbnails"]["default"]["url"]
+				youtubeReturnValue["Video"+str(x)] = tmp
+				x = x + 1
+		except Exception, e:
+			youtubeAnswer = "No Videos Available for this company"
+
 
 	except urllib2.HTTPError:
 		youtubeAnswer = "No Videos Available for this company"
@@ -237,29 +255,32 @@ def resourcesReturn():
 
 		x = 0
 		tmp = {}
-		for i in bookAnswer["items"]:
-			tmp = {}
-			tmp["url"] =  "https://books.google.ca/books?id="+i["id"]
-			tmp["title"] =  i["volumeInfo"]["title"]
-			try:
-				tmp["author"] = i["volumeInfo"]["authors"]
-			except Exception, e:
-				tmp["author"] = ["Anonymous"]
-			try:
-				tmp["description"] = json.load(urllib2.urlopen("https://www.googleapis.com/books/v1/volumes/"+i["id"]+"?key=AIzaSyAcB5J8KqGGka_2E0Xeyc187nQ0VcInLzM"))["volumeInfo"]["description"]
+		try:
+			for i in bookAnswer["items"]:
+				tmp = {}
+				tmp["url"] =  "https://books.google.ca/books?id="+i["id"]
+				tmp["title"] =  i["volumeInfo"]["title"]
+				try:
+					tmp["author"] = i["volumeInfo"]["authors"]
+				except Exception, e:
+					tmp["author"] = ["Anonymous"]
+				try:
+					tmp["description"] = json.load(urllib2.urlopen("https://www.googleapis.com/books/v1/volumes/"+i["id"]+"?key=AIzaSyAcB5J8KqGGka_2E0Xeyc187nQ0VcInLzM"))["volumeInfo"]["description"]
 
-			except Exception, e:
-				tmp["description"] = "No Description For This book"
+				except Exception, e:
+					tmp["description"] = "No Description For This book"
 
-			try:
-				tmp["image"] = i["volumeInfo"]["imageLinks"]["thumbnail"]
+				try:
+					tmp["image"] = i["volumeInfo"]["imageLinks"]["thumbnail"]
 
-			except Exception, e:
+				except Exception, e:
 
-				tmp["image"] = "NONE"
+					tmp["image"] = "NONE"
 
-			bookReturnValue["Book"+str(x)] = tmp
-			x = x + 1
+				bookReturnValue["Book"+str(x)] = tmp
+				x = x + 1
+		except Exception, e:
+			bookAnswer = "No books available for this company"
 
 	except urllib2.HTTPError:
 		bookAnswer = "No books available for this company"
@@ -270,14 +291,17 @@ def resourcesReturn():
 
 		x = 0
 		tmp = {}
-		for i in courseraAnswer["elements"]:
-			tmp = {}
-			tmp["url"] =  "https://www.coursera.org/learn/"+i["slug"]
-			tmp["title"] =  i["name"]
-			tmp["description"] = i["description"]
-			tmp["image"] = i["photoUrl"]
-			courseraReturnValue["Course"+str(x)] = tmp
-			x = x + 1
+		try:
+			for i in courseraAnswer["elements"]:
+				tmp = {}
+				tmp["url"] =  "https://www.coursera.org/learn/"+i["slug"]
+				tmp["title"] =  i["name"]
+				tmp["description"] = i["description"]
+				tmp["image"] = i["photoUrl"]
+				courseraReturnValue["Course"+str(x)] = tmp
+				x = x + 1
+		except Exception, e:
+			courseraAnswer="No courses available for this company"
 
 	except urllib2.HTTPError:
 		courseraAnswer="No courses available for this company"

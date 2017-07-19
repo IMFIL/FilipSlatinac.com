@@ -211,9 +211,9 @@ def resourcesReturn():
 	tag3 =request.args.get('tag3')
 	tag4 = request.args.get('tag4')
 
-	youtubeApi = "https://www.googleapis.com/youtube/v3/search?q="+tag1+"+"+tag2+"+"+tag3+"+"+tag4+"&part=snippet&type=video&key=AIzaSyAcB5J8KqGGka_2E0Xeyc187nQ0VcInLzM&maxResults=8"
-	bookApi = "https://www.googleapis.com/books/v1/volumes?q="+tag1+"+"+tag2+"+"+tag3+"+"+tag4+"&key=AIzaSyAcB5J8KqGGka_2E0Xeyc187nQ0VcInLzM&maxResults=8"
-	courseraApi = "https://api.coursera.org/api/courses.v1?q=search&query="+tag1+"+"+tag2+"+"+tag3+"+"+tag4+"&limit=8&fields=photoUrl,description"
+	youtubeApi = "https://www.googleapis.com/youtube/v3/search?q="+tag1+"+"+tag2+"+"+tag3+"+"+tag4+"&part=snippet&type=video&key=AIzaSyAcB5J8KqGGka_2E0Xeyc187nQ0VcInLzM&maxResults=10"
+	bookApi = "https://www.googleapis.com/books/v1/volumes?q="+tag1+"+"+tag2+"+"+tag3+"+"+tag4+"&key=AIzaSyAcB5J8KqGGka_2E0Xeyc187nQ0VcInLzM&maxResults=10"
+	courseraApi = "https://api.coursera.org/api/courses.v1?q=search&query="+tag1+"+"+tag2+"+"+tag3+"+"+tag4+"&limit=10&fields=photoUrl,description"
 
 	youtubeAnswer=None
 	bookAnswer=None

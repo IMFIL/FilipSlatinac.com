@@ -14,7 +14,7 @@ from bs4 import BeautifulSoup
 
 
 app = Flask(__name__)
-names = ["FreeScholars", "cookR", "PersonalWebsite"]
+names = ["FreeScholars", "cookR", "PersonalWebsite","Pegasus","Tipper"]
 
 
 @app.route('/')
@@ -215,6 +215,8 @@ def resourcesReturn():
 	bookApi = "https://www.googleapis.com/books/v1/volumes?q="+tag1+"+"+tag2+"+"+tag3+"+"+tag4+"&key=AIzaSyAcB5J8KqGGka_2E0Xeyc187nQ0VcInLzM&maxResults=10"
 	courseraApi = "https://api.coursera.org/api/courses.v1?q=search&query="+tag1+"+"+tag2+"+"+tag3+"+"+tag4+"&limit=10&fields=photoUrl,description"
 
+	print(bookApi)
+	
 	youtubeAnswer=None
 	bookAnswer=None
 	courseraAnswer=None

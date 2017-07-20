@@ -4,7 +4,7 @@ names = [];
 function addBackGroundImages(){
 	for(var i=0;i<names.length;i++){
 
-		if(names[i] == "cookR"){
+		if(names[i] == "cookR"||names[i] == "Pegasus" || names[i] == "Tipper"){
 			jQuery("#"+names[i]).css("background","url(/static/"+names[i]+"Picture"+".png) 50% 50% / 0% 0% no-repeat");
 			jQuery("#"+names[i]).css("background-size","50% 100% ");
 		}

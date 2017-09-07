@@ -25,7 +25,7 @@ def index():
 	token = " a224cb16f6d15570adc3a377992a9fd19509a1a7"
 	headers =  {'Authorization:': 'token %s' % token}
 
-	repositories = requests.get(url, auth=('IMFIL','GH1557546!!!e')).json();
+	repositories = requests.get(url, auth=('IMFIL','123FilipGitHub2017!')).json();
 	relevantRepos = []
 
 	for item in repositories:

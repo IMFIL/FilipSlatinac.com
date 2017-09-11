@@ -30,7 +30,7 @@ def index():
 
 	for item in repositories:
 		if (item["name"] in names):
-			descriptions[item["name"]] = (requests.get("https://api.github.com/repos/IMFIL/" + item["name"] + "/readme", auth=('IMFIL','GH1557546!!!e')).json()["content"].decode('base64'))
+			descriptions[item["name"]] = (requests.get("https://api.github.com/repos/IMFIL/" + item["name"] + "/readme", auth=('IMFIL','123FilipGitHub2017!')).json()["content"].decode('base64'))
 			relevantRepos.append(item)
 
 
